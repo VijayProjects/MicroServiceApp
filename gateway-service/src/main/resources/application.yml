@@ -1,0 +1,30 @@
+info:
+  component: Edge Server
+management:
+  endpoint:
+    beans:
+      enabled: true 
+    shutdown:
+       enabled: true
+    health:
+       show-details: ALWAYS 
+zuul:
+  prefix: /api
+  routes:
+    account:
+      path: /account/**
+      serviceId: account-service
+    customer:
+      path: /customer/**
+      serviceId: customer-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+    registerWithEureka: true
+server:
+  port: 4444
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
